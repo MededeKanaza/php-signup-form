@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Elysian Signup · Medede Kanaza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            background: radial-gradient(circle at 10% 30%, #d9e2ec, #cbd5e1);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            margin: 0;
+        }
+
+        /* main glass-card container — perfectly centered */
+        .signup-wrapper {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* card with refined elegance and depth */
+        .container {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 42px;
+            padding: 36px 32px 42px 32px;
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6) inset, 0 0 0 2px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        .container:hover {
+            box-shadow: 0 35px 55px -18px rgba(0, 0, 0, 0.3);
+        }
+
+        /* title with subtle gradient */
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 28px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(125deg, #1F3E48, #2A6B4E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            word-break: keep-all;
+        }
+
+        /* label styling - airy but clear */
+        label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1e2f3c;
+            display: block;
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+            margin-left: 4px;
+        }
+
+        /* input fields — modern, round, soft */
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background-color: #ffffff;
+            border: 1.5px solid #e2edf2;
+            border-radius: 28px;
+            transition: all 0.2s ease;
+            outline: none;
+            color: #1e2f3c;
+            font-weight: 500;
+        }
+
+        input:focus {
+            border-color: #3e9f64;
+            box-shadow: 0 4px 12px rgba(59, 130, 90, 0.12), 0 0 0 3px rgba(62, 159, 100, 0.2);
+            background-color: #ffffff;
+        }
+
+        /* elegant button with soft gradient */
+        button {
+            background: linear-gradient(105deg, #236B42, #3e9f64);
+            border: none;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 44px;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: inherit;
+            color: white;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 8px 18px rgba(46, 125, 77, 0.25);
+            margin-top: 8px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(105deg, #1d5e39, #348c56);
+            box-shadow: 0 14px 24px rgba(46, 125, 77, 0.35);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            transition: 0.05s;
+        }
+
+        /* spacing for input groups */
+        .input-group {
+            margin-bottom: 22px;
+        }
+
+        /* error message micro */
+        .error-message {
+            color: #e34d4c;
+            font-size: 0.7rem;
+            margin-top: 6px;
+            margin-left: 12px;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: -0.1px;
+        }
+
+        /* ----- DESIGN BY MEDEDE KANAZA - FULLY CENTERED + DISTINCT FOOTER ----- */
+        .designer-credit {
+            margin-top: 32px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .medede-badge {
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 8px 28px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            font-weight: 540;
+            color: #1a4d3a;
+            border: 1px solid rgba(70, 130, 100, 0.25);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s;
+        }
+
+        .medede-badge strong {
+            font-weight: 700;
+            background: linear-gradient(120deg, #1d5e39, #2c7a4b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.2px;
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: softBeat 1.6s ease infinite;
+            font-size: 1rem;
+        }
+
+        @keyframes softBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        .footer-subtle {
+            margin-top: 12px;
+            font-size: 0.7rem;
+            color: #4b6a5c;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.75;
+        }
+
+        /* responsive touches */
+        @media (max-width: 560px) {
+            .container {
+                padding: 28px 22px 34px 22px;
+                border-radius: 32px;
+            }
+            h2 {
+                font-size: 1.85rem;
+            }
+            .medede-badge {
+                padding: 6px 18px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* nice little transition for success animation */
+        .success-shake {
+            transition: all 0.05s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-wrapper">
+        <div class="container">
+            <h2> create account </h2>
+
+            <form action="process.php" method="POST" id="elegantSignupForm" novalidate>
+                <div class="input-group">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                    <div id="fullname-error" class="error-message"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" required>
+                    <div id="email-error" class="error-message"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"  required>
+                    <div id="password-error" class="error-message"></div>
+                </div>
+
+                <button type="submit" id="submitBtn">Sign up</button>
+            </form>
+
+            <!-- design by Medede Kanaza — fully centered and distinguished -->
+            <div class="designer-credit">
+                <div class="medede-badge">
+                 design by <strong>Medede Kanaza</strong>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // DOM elements
+            const form = document.getElementById('elegantSignupForm');
+            const fullnameInput = document.getElementById('fullname');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            
+            const fullnameError = document.getElementById('fullname-error');
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // helper: reset border to neutral
+            function resetBorderColor(inputEl) {
+                inputEl.style.borderColor = "#e2edf2";
+            }
+
+            function setErrorBorder(inputEl) {
+                inputEl.style.borderColor = "#e34d4c";
+            }
+
+            // Real-time validation helpers (pure)
+            function validateFullnameRealTime(value) {
+                const trimmed = value.trim();
+                if (value.length > 0 && trimmed.length < 2) {
+                    fullnameError.textContent = '⨯ Name must contain at least 2 characters';
+                    setErrorBorder(fullnameInput);
+                    return false;
+                } else if (trimmed.length >= 2) {
+                    fullnameError.textContent = '';
+                    resetBorderColor(fullnameInput);
+                    return true;
+                } else if (value.length === 0) {
+                    fullnameError.textContent = '';
+                    resetBorderColor(fullnameInput);
+                    return false;
+                }
+                return false;
+            }
+
+            function validateEmailRealTime(emailVal) {
+                const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                if (emailVal.length > 0 && (!emailRegex.test(emailVal) || emailVal.includes(' '))) {
+                    emailError.textContent = '⨯ Please enter a valid email (e.g., name@domain.com)';
+                    setErrorBorder(emailInput);
+                    return false;
+                } else if (emailVal.length > 0 && emailRegex.test(emailVal) && !emailVal.includes(' ')) {
+                    emailError.textContent = '';
+                    resetBorderColor(emailInput);
+                    return true;
+                } else if (emailVal.length === 0) {
+                    emailError.textContent = '';
+                    resetBorderColor(emailInput);
+                    return false;
+                }
+                return false;
+            }
+
+            function validatePasswordRealTime(passVal) {
+                if (passVal.length > 0 && passVal.length < 6) {
+                    passwordError.textContent = '⨯ Password must contain at least 6 characters';
+                    setErrorBorder(passwordInput);
+                    return false;
+                } else if (passVal.length >= 6) {
+                    passwordError.textContent = '';
+                    resetBorderColor(passwordInput);
+                    return true;
+                } else if (passVal.length === 0) {
+                    passwordError.textContent = '';
+                    resetBorderColor(passwordInput);
+                    return false;
+                }
+                return false;
+            }
+
+            // attach live input listeners (real-time elegance)
+            fullnameInput.addEventListener('input', function(e) {
+                validateFullnameRealTime(e.target.value);
+            });
+            emailInput.addEventListener('input', function(e) {
+                validateEmailRealTime(e.target.value);
+            });
+            passwordInput.addEventListener('input', function(e) {
+                validatePasswordRealTime(e.target.value);
+            });
+
+            // blur: more consistent user feedback (if field left incomplete)
+            fullnameInput.addEventListener('blur', function() {
+                const val = fullnameInput.value;
+                if (val.trim().length === 0) {
+                    fullnameError.textContent = '';
+                    resetBorderColor(fullnameInput);
+                } else {
+                    validateFullnameRealTime(val);
+                }
+            });
+            emailInput.addEventListener('blur', function() {
+                const val = emailInput.value;
+                if (val.length === 0) {
+                    emailError.textContent = '';
+                    resetBorderColor(emailInput);
+                } else {
+                    validateEmailRealTime(val);
+                }
+            });
+            passwordInput.addEventListener('blur', function() {
+                const val = passwordInput.value;
+                if (val.length === 0) {
+                    passwordError.textContent = '';
+                    resetBorderColor(passwordInput);
+                } else {
+                    validatePasswordRealTime(val);
+                }
+            });
+
+            // main form validation (full check before submit)
+            function fullFormValidation() {
+                let isValid = true;
+                
+                // fullname validation final
+                const fullnameVal = fullnameInput.value;
+                if (fullnameVal.trim().length < 2) {
+                    fullnameError.textContent = '✧ Name must contain at least 2 characters';
+                    setErrorBorder(fullnameInput);
+                    isValid = false;
+                } else {
+                    fullnameError.textContent = '';
+                    resetBorderColor(fullnameInput);
+                }
+                
+                // email final
+                const emailVal = emailInput.value;
+                const emailRegexFinal = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                if (!emailRegexFinal.test(emailVal) || emailVal.includes(' ')) {
+                    emailError.textContent = '✧ Please enter a valid email address (e.g., name@domain.com)';
+                    setErrorBorder(emailInput);
+                    isValid = false;
+                } else {
+                    emailError.textContent = '';
+                    resetBorderColor(emailInput);
+                }
+                
+                // password final
+                const passVal = passwordInput.value;
+                if (passVal.length < 6) {
+                    passwordError.textContent = '✧ Password must contain at least 6 characters';
+                    setErrorBorder(passwordInput);
+                    isValid = false;
+                } else {
+                    passwordError.textContent = '';
+                    resetBorderColor(passwordInput);
+                }
+                
+                return isValid;
+            }
+            
+            // submit interceptor with smooth micro-interaction
+            form.addEventListener('submit', function(event) {
+                const valid = fullFormValidation();
+                if (!valid) {
+                    event.preventDefault();
+                    // subtle shake effect on submit button for feedback
+                    submitBtn.style.transform = "translateX(2px)";
+                    setTimeout(() => { submitBtn.style.transform = ""; }, 100);
+                    // gentle attention to first error field
+                    const firstErrored = document.querySelector('.error-message:not(:empty)');
+                    if (firstErrored) {
+                        const parentGroup = firstErrored.closest('.input-group');
+                        if(parentGroup) {
+                            const inputField = parentGroup.querySelector('input');
+                            if(inputField) inputField.focus();
+                        }
+                    }
+                } else {
+                    // optional success micro animation before actual submission
+                    event.preventDefault(); // temporarily prevent to show success style (but we will submit after micro)
+                    // add loading / pulse style
+                    const originalText = submitBtn.innerText;
+                    submitBtn.innerText = '✓ signing up ...';
+                    submitBtn.style.opacity = '0.9';
+                    submitBtn.disabled = true;
+                    
+                    // simulate small visual flourish then submit (since action is process.php, we submit form)
+                    // but we must not break actual form POST: so we manually submit after delay
+                    setTimeout(() => {
+                        // Re-enable just in case, but submit natively
+                        submitBtn.disabled = false;
+                        // Actually submit the form programmatically to ensure POST to process.php
+                        form.submit();
+                    }, 280);
+                }
+            });
+            
+            // Extra polish: if form is valid on keyup remove aggressive error styling on successful correction
+            // also ensure fullname trim validation on paste
+            fullnameInput.addEventListener('change', function() {
+                if (fullnameInput.value.trim().length >= 2) {
+                    fullnameError.textContent = '';
+                    resetBorderColor(fullnameInput);
+                }
+            });
+            
+            // Password live counter for extra clarity (enhance but minimal)
+            passwordInput.addEventListener('input', function() {
+                const len = passwordInput.value.length;
+                if (len >= 6 && passwordError.textContent.includes('6 characters')) {
+                    passwordError.textContent = '';
+                    resetBorderColor(passwordInput);
+                }
+            });
+            
+            // Additional edge: reset email error when corrected by paste or autofill
+            emailInput.addEventListener('change', function() {
+                const emailRegexChange = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                if (emailRegexChange.test(emailInput.value) && !emailInput.value.includes(' ')) {
+                    emailError.textContent = '';
+                    resetBorderColor(emailInput);
+                }
+            });
+            
+            // ensure that form elements keep original design after autofill (chrome)
+            window.addEventListener('load', function() {
+                // check initial values if any browser autofill
+                if (fullnameInput.value.trim().length >= 2) {
+                    fullnameError.textContent = '';
+                    resetBorderColor(fullnameInput);
+                }
+                if (emailInput.value.length > 0) {
+                    const emailRegexLoad = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                    if (emailRegexLoad.test(emailInput.value) && !emailInput.value.includes(' ')) {
+                        emailError.textContent = '';
+                        resetBorderColor(emailInput);
+                    } else if (emailInput.value.length > 0) {
+                        // show hint maybe, but don't force error on load unless necessary
+                        if (!emailRegexLoad.test(emailInput.value)) {
+                            emailError.textContent = '⨯ Please enter a valid email address';
+                            setErrorBorder(emailInput);
+                        }
+                    }
+                }
+                if (passwordInput.value.length >= 6) {
+                    passwordError.textContent = '';
+                    resetBorderColor(passwordInput);
+                } else if (passwordInput.value.length > 0 && passwordInput.value.length < 6) {
+                    passwordError.textContent = '⨯ Password must contain at least 6 characters';
+                    setErrorBorder(passwordInput);
+                }
+            });
+            
+            // optional: Prevent double submission if disabled button triggers
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const isValidSubmit = fullFormValidation();
+                        if (isValidSubmit) {
+                            const btn = submitBtn;
+                            btn.innerText = '✓ signing up ...';
+                            btn.disabled = true;
+                            setTimeout(() => {
+                                btn.disabled = false;
+                                form.submit();
+                            }, 200);
+                        } else {
+                            // trigger validation errors highlight
+                            fullFormValidation();
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
